@@ -1,0 +1,10 @@
+var a = 20;
+var rno;
+var k = "satya";
+console.log(typeof a, typeof rno, typeof k);
+k = 25;
+k = true;
+console.log(typeof k);
+var q = 55;
+q = "satya";
+q = true;
