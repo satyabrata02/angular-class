@@ -1,0 +1,41 @@
+
+img{
+    height: 150px;
+    width: 240px;
+    padding: 10px 10px 0;
+}
+h2{
+    font-size: 22px;
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    height: 30px;
+}
+.btn button{
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 30px;
+    margin-right: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn button:hover{
+    background-color: #777;
+}
+.btn button:disabled{
+    background-color: #777;
+}
+.btn button.ord{
+    width: 70px;
+    border-radius: 20px;
+}
+.btn span{
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
