@@ -11,3 +11,9 @@ body{
     background-size: cover;
     background-position: center;
 }
+
+@media(max-width:895px){
+    body{
+        height: 100%;
+    }
+}

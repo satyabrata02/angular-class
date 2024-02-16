@@ -82,5 +82,7 @@
 @media(max-width:895px){
     .child{
         margin: 10px 0 20px;
+        width: 350px;
+        height: 265px;
     }
 }

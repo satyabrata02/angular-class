@@ -99,5 +99,7 @@ h1{
     }
     .parent{
         margin: 20px 0 ;
+        width: 350px;
+        height: 265px;
     }
 }
