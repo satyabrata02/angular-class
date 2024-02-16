@@ -85,4 +85,14 @@
         width: 350px;
         height: 265px;
     }
+    .child .input input{
+        padding-left: 8px;
+    }
+    .child .input label{
+        font-size: 14px;
+        left: calc(100% - 87%);
+    }
+    .child p{
+        font-size: 17px;
+    }
 }
