@@ -1,0 +1,86 @@
+
+.child{
+    width: 420px;
+    height: 290px;
+    margin-left: 10px;
+    background-color: white;
+    border-radius: 15px;
+}
+.child h2{
+    padding: 15px 0;
+    font-size: 24px;
+    font-family: cursive;
+}
+.child hr{
+    margin-bottom: 10px;
+    background-color: aqua;
+    height: 3px;
+    border: none;
+}
+.child .input{
+    position: relative;
+    width: 100%;
+    padding: 40px 0;
+}
+.child .input input{
+    width: 60%;
+    color: #333;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    border: none;
+    border-bottom: 2px solid #666;
+    background: none;
+    font-size: 17px;
+    outline: none;
+}
+.child .input input:focus{
+    border-bottom: 2px solid #0c08ff;
+}
+.child .input input:focus ~ label,
+.child .input input:valid ~ label{
+    transform: translateY(-25px);
+    font-size: 13px;
+    font-family: cursive;
+    color: #0c08ff;
+}
+.child .input label{
+    position: absolute;
+    font-size: 15px;
+    left: calc(100% - 85%);
+    top: 48px;
+    color: #666;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.child .input button{
+    margin-left: 10px;
+    background: #222;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.child .input button:hover{
+    background: #424141;
+}
+.child p{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: monospace;
+}
+.child p.title{
+    font-size: 18px;
+    margin-top: 12px;
+    font-weight: bold;
+    color: blue;
+}
+
+@media(max-width:895px){
+    .child{
+        margin: 10px 0 20px;
+    }
+}

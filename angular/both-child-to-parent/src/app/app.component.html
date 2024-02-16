@@ -1,0 +1,14 @@
+<h1>Parent To Child and Child To Parent</h1>
+<div class="both">
+  <div class="parent">
+    <h2>Parent Session</h2><hr>
+    <div class="input">
+      <input type="text" [(ngModel)]="value" required>
+      <label>Send Message to Child Session</label>
+      <button (click)="sendtochild()">Send</button>
+    </div>
+    <p>Received From Child Session:</p>
+    <p class="title">{{receivevalue}}</p>
+  </div>
+  <app-child [sdata]="senddata" (satya)="receive($event)"></app-child>
+</div>

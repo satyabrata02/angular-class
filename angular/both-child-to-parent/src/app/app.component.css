@@ -1,0 +1,103 @@
+h1{
+    background: #5372F0;
+    font-size: 30px;
+    text-align: center;
+    padding: 15px 0;
+    color: #fff;
+}
+.both{
+    display: flex;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.parent{
+    width: 420px;
+    height: 290px;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 15px;
+}
+.parent h2{
+    padding: 15px 0;
+    font-size: 24px;
+    font-family: cursive;
+}
+.parent hr{
+    margin-bottom: 10px;
+    background-color: aqua;
+    height: 3px;
+    border: none;
+}
+.parent .input{
+    position: relative;
+    width: 100%;
+    padding: 40px 0;
+}
+
+.parent .input input{
+    width: 60%;
+    color: #333;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    border: none;
+    border-bottom: 2px solid #666;
+    background: none;
+    font-size: 17px;
+    outline: none;
+}
+.parent .input input:focus{
+    border-bottom: 2px solid #0c08ff;
+}
+.parent .input input:focus ~ label,
+.parent .input input:valid ~ label{
+    transform: translateY(-25px);
+    font-size: 13px;
+    font-family: cursive;
+    color: #0c08ff;
+}
+.parent .input label{
+    position: absolute;
+    font-size: 15px;
+    left: calc(100% - 85%);
+    top: 48px;
+    color: #666;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.parent .input button{
+    margin-left: 10px;
+    background: #222;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.parent .input button:hover{
+    background: #424141;
+}
+.both p{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: monospace;
+}
+.both p.title{
+    font-size: 18px;
+    margin-top: 12px;
+    font-weight: bold;
+    color: blue;
+}
+
+@media(max-width:895px){
+    .both{
+        display: grid;
+    }
+    .parent{
+        margin: 20px 0 ;
+    }
+}
