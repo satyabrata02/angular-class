@@ -1,0 +1,10 @@
+<div class="child">
+    <h2>Child Session</h2><hr>
+    <div class="input">
+      <input type="text" [(ngModel)]="value" required>
+      <label>Send Message to Parent Session</label>
+      <button (click)="sendtoparent()">Send</button>
+    </div>
+    <p>Received From Parent Session:</p>
+    <p class="title">{{sdata}}</p>
+</div>

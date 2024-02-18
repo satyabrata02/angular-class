@@ -1,0 +1,427 @@
+h1{
+    margin: 0;
+    background: #5372F0;
+    font-size: 30px;
+    text-align: center;
+    padding: 15px 0;
+    color: #fff;
+}
+.center, .content1, .content3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.center .btns{
+    display: flex;
+    gap: 20px;
+}
+.btns .click-me{
+    display: block;
+    width: 140px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #27ae60;
+    border: 1.5px solid #004b23;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+}
+.btns .click-me:hover{
+    background-color: #219150;
+}
+.btns .click-me.snd{
+    background: #c0c0c0;
+    border: 2px solid #666;
+}
+.btns .click-me.snd:hover{
+    background: #abaaaa;
+}
+.btns .click-me.trd{
+    background: #23c8d3;
+    border: 2px solid #666;
+}
+.btns .click-me.trd:hover{
+    background: #1da9b3;
+}
+
+.overlay1, .overlay2, .overlay3{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay1.active,
+.overlay2.active,
+.overlay3.active{
+    visibility: visible;
+    opacity: 1;
+}
+.overlay1 .content1{
+    width: 400px;
+    height: 370px;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px 0 rgba(46, 255, 133, 0.578);
+}
+.content1 .header{
+    height: 68px;
+    background-color: #27ae60;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+.content1 .header h2{
+    color: white;
+    text-align: center;
+}
+.content1 .header label{
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    color: #e8f7fc;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.content1 img{
+    height: 180px;
+    width: 320px;
+    margin-top: 10px;
+    border-radius: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    position: relative;
+}
+.content1 img:hover{
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 4);
+}
+.content1 .btn{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    height: 30px;
+}
+.content1 .btn button{
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 30px;
+    margin-right: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+.content1 .btn button:last-child{
+    margin-right: 0;
+}
+.content1 .btn button:hover{
+    background-color: #777;
+}
+.content1 .btn button:disabled{
+    background-color: #777;
+}
+.content1 .btn button.ord{
+    width: 70px;
+    border-radius: 20px;
+}
+.content1 .btn span{
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+.content1 hr{
+    border: none;
+    height: 3px;
+    background-color: #27ae60;
+}
+.content1 label.close-btn{
+    position: absolute;
+    left: calc(50% - 20px);
+    border: 1px solid #27ae60;
+    border-radius: 10px;
+    color: #27ae60;
+    padding: 8px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.content1 label.close-btn:hover{
+    background: #27ae60;
+    color: white;
+}
+.overlay2 label.fa-times{
+    position: absolute;
+    right: 12px;
+    top: 15px;
+    border: 2px solid #e8f7fc;
+    padding: 7px 9px;
+    border-radius: 50%;
+    color: #e8f7fc;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.overlay2 label.fa-times:hover{
+    color: black;
+    background-color: #e8f7fc;
+}
+.overlay2 .both{
+    display: flex;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.parent, app-child{
+    width: 420px;
+    height: 290px;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 15px;
+}
+.parent h2{
+    font-size: 24px;
+    font-family: cursive;
+}
+.parent hr{
+    background-color: aqua;
+    height: 3px;
+    border: none;
+}
+.parent .input{
+    position: relative;
+    width: 100%;
+    padding: 35px 0 20px;
+}
+.parent .input input{
+    width: 60%;
+    color: #333;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    border: none;
+    border-bottom: 2px solid #666;
+    background: none;
+    font-size: 17px;
+    outline: none;
+}
+.parent .input input:focus{
+    border-bottom: 2px solid #0c08ff;
+}
+.parent .input input:focus ~ label,
+.parent .input input:valid ~ label{
+    transform: translateY(-25px);
+    font-size: 13px;
+    font-family: cursive;
+    color: #0c08ff;
+}
+.parent .input label{
+    position: absolute;
+    font-size: 15px;
+    left: calc(100% - 87%);
+    top: 45px;
+    color: #666;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.parent .input button{
+    margin-left: 10px;
+    background: #222;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.parent .input button:hover{
+    background: #424141;
+}
+.both p{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: monospace;
+}
+.both p.title{
+    font-size: 18px;
+    margin-top: 12px;
+    font-weight: bold;
+    color: blue;
+}
+app-child{
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.overlay3 .content3{
+    width: 400px;
+    height: 340px;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px 0 rgba(44, 235, 248, 0.427);
+}
+.content3 .header{
+    height: 68px;
+    background-color: #2ceaf8;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+.content3 .header h2{
+    color: white;
+    text-align: center;
+}
+.content3 .header label{
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    color: #e8f7fc;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.content3 .input{
+    position: relative;
+    width: 100%;
+    padding: 35px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.content3 .input input{
+    width: 70%;
+    height: 35px;
+    color: #333;
+    padding-left: 10px;
+    border: 2px solid #666;
+    border-radius: 10px 0 0 10px;
+    background: none;
+    font-size: 17px;
+    outline: none;
+}
+.content3 .input input:focus{
+    border: 2px solid #0c08ff;
+}
+.content3 .input input:focus ~ label,
+.content3 .input input:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 13px;
+    font-family: cursive;
+    padding: 0 5px;
+    color: #0c08ff;
+    background-color: white;
+    border-left: 2px solid #666;
+    border-right: 2px solid #666;
+}
+.content3 .input input:focus ~ label{
+    border-left: 2px solid #0c08ff;
+    border-right: 2px solid #0c08ff;
+}
+.content3 .input label{
+    position: absolute;
+    font-size: 15px;
+    left: 8%;
+    top: 47px;
+    color: #666;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.content3 .input button{
+    height: 42px;
+    background: #2ceaf8;
+    border: 2px solid #666;
+    color: black;
+    font-size: 15px;
+    border-left: none;
+    text-transform: uppercase;
+    outline: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+}
+.content3 .input button:hover{
+    background: #87f7ff;
+}
+.content3 .input input:focus ~ button{
+    border: 2px solid #0c08ff;
+    border-left: none;
+}
+.content3 .data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.content3 .data h3{
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+.content3 .data p{
+    font-size: 18px;
+}
+.content3 hr{
+    border: none;
+    height: 3px;
+    background-color: #2ceaf8;
+}
+.content3 label.close-btn{
+    position: absolute;
+    margin-top: 8px;
+    left: calc(50% - 30px);
+    border: 2px solid #2ceaf8;
+    border-radius: 10px;
+    color: #44979d;
+    padding: 8px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.content3 label.close-btn:hover{
+    background: #2ceaf8;
+    color: white;
+}
+@media(max-width:895px){
+    h1{
+        font-size: 20px;
+    }
+    .center .btns{
+        display: grid;
+    }
+    .overlay2 .both{
+        height: 100%;
+        display: grid;
+        overflow: auto;
+    }
+    .parent,app-child{
+        margin: 70px 0 20px;
+        width: 350px;
+        height: 265px;
+    }
+    app-child{
+        margin: 15px 0;
+    }
+    .parent .input input{
+        padding-left: 8px;
+    }
+    .parent .input label{
+        font-size: 14px;
+        left: calc(100% - 87%);
+    }
+    .both p{
+        font-size: 17px;
+    }
+}

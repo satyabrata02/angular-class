@@ -1,0 +1,78 @@
+<h1>Count App, Component App and Conditions App(3 in 1)</h1>
+<div class="center">
+  <div class="btns">
+    <label for="click1" class="click-me" (click)="click1()">Count App</label>
+    <label for="click2" class="click-me snd" (click)="click2()">Component App</label>
+    <label for="click3" class="click-me trd" (click)="click3()">Conditions App</label>
+  </div>
+</div>
+<div class="overlay1" id="click1">
+  <div class="content1">
+    <div class="header">
+      <h2>Food Bakery</h2>
+      <label for="click1" class="fas fa-times" (click)="close1()"></label>
+    </div>
+    <img src="https://media.easemytrip.com/media/Blog/India/636977607425696252/636977607425696252QYiiUU.jpg" alt="Food Image">
+    <div class="btn">
+      <div>
+        <button (click)="incr()" [disabled]="isDisabled">+</button>
+        <button (click)="decr()" [disabled]="isDisabled2">-</button>
+        <button class="ord" (click)="order()" [disabled]="isOrdered">{{ isOrdered ? 'Ordered' : 'Buy' }}</button>
+      </div>
+      <span>Qnt: {{ count }}</span>
+    </div><hr>
+    <label for="click1" class="close-btn" (click)="close1()">Close</label>
+  </div>
+</div>
+
+<div class="overlay2" id="click2">
+  <label for="click1" class="fas fa-times" (click)="close2()"></label>
+  <div class="both">
+    <div class="parent">
+      <h2>Parent Session</h2><hr>
+      <div class="input">
+        <input type="text" [(ngModel)]="value" required>
+        <label>Send Message to Child Session</label>
+        <button (click)="sendtochild()">Send</button>
+      </div>
+      <p>Received From Child Session:</p>
+      <p class="title">{{receivevalue}}</p>
+    </div>
+    <app-child [sdata]="senddata" (satya)="receive($event)"></app-child>
+  </div>
+</div>
+
+<div class="overlay3" id="click3">
+  <div class="content3">
+    <div class="header">
+      <h2>Switch Case</h2>
+      <label for="click1" class="fas fa-times" (click)="close3()"></label>
+    </div>
+    <div class="input">
+      <input type="text" [(ngModel)]="value3" (input)="check()" required>
+      <label>Check vowel and week</label>
+      <button (click)="check()">Check</button>
+    </div>
+    <div class="data" [ngSwitch]="value3.trim().toLowerCase()">
+      <h3>Result:</h3>
+      <p *ngSwitchCase="'1'">Sunday</p>
+      <p *ngSwitchCase="'2'">Monday</p>
+      <p *ngSwitchCase="'3'">Tuesday</p>
+      <p *ngSwitchCase="'4'">Wednesday</p>
+      <p *ngSwitchCase="'5'">Thursday</p>
+      <p *ngSwitchCase="'6'">Friday</p>
+      <p *ngSwitchCase="'7'">Saturday</p>
+      <p *ngSwitchCase="'sunday'">1</p>
+      <p *ngSwitchCase="'monday'">2</p>
+      <p *ngSwitchCase="'tuesday'">3</p>
+      <p *ngSwitchCase="'wednesday'">4</p>
+      <p *ngSwitchCase="'thursday'">5</p>
+      <p *ngSwitchCase="'friday'">6</p>
+      <p *ngSwitchCase="'saturday'">7</p>
+
+      <p *ngSwitchDefault>{{isVowel}}</p>
+      
+    </div><hr>
+    <label for="click1" class="close-btn" (click)="close3()">Close</label>
+  </div>
+</div>
