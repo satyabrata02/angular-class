@@ -196,7 +196,7 @@ h1{
     font-family: cursive;
 }
 .parent hr{
-    background-color: aqua;
+    background-color: #a1a0a0;
     height: 3px;
     border: none;
 }
