@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   receipes: any[] = []
   constructor(){
-    fetch('https://dummyjson.com/recipes')
+    fetch(`https://dummyjson.com/recipes`)
       .then((res) => res.json())
       .then((data) => (this.receipes = data.recipes));
   }
