@@ -1,0 +1,70 @@
+<div class="header">
+  <h1>Pokedex</h1>
+  <div class="searchBar">
+    <input type="text" required [(ngModel)]="pname">
+    <label>Find Your Fav. Pokemon</label>
+    <button (click)="search()">Find</button>
+  </div>
+</div>
+
+<div>
+  <div class="pokemons">
+    <div class="poke-card" *ngFor="let p of pokemons">
+      <div class="pimg">
+        <img src="{{p.sprites?.front_default}}" alt="front-img">
+        <img src="{{p.sprites?.back_default}}" alt="back-img">
+      </div>
+      <h2>{{p.name}}</h2>
+      <button class="moredetails" (click)="active(p)">More Details</button>
+    </div>
+  </div>
+  <button class="back" (click)="back()" [ngStyle]="{ display: isFind ? 'none' : 'block' }">Back</button>
+
+  <div class="overlay" [ngClass]="{ active: isActive }">
+    <div class="body-content">
+      <div class="body-header">
+        <h2>{{ activePokemon?.name }}</h2>
+        <label class="fas fa-times" (click)="active(null)"></label>
+      </div>
+      <div class="info" *ngIf="activePokemon">
+        <div class="both">
+          <p><strong>height:&nbsp;</strong> {{ activePokemon.height }}</p>
+          <p><strong>weight:&nbsp;</strong> {{ activePokemon.weight }}</p>
+        </div>
+        <div class="both">
+          <p><strong>HP:&nbsp;</strong> {{ activePokemon.stats[0].base_stat }}</p>
+          <p><strong>attack:&nbsp;</strong> {{ activePokemon.stats[1].base_stat }}</p>
+        </div>
+        <div class="both">
+          <p><strong>defence:&nbsp;</strong> {{ activePokemon.stats[2].base_stat }}</p>
+          <p><strong>Special Attack:&nbsp;</strong> {{ activePokemon.stats[3].base_stat }}</p>
+        </div>
+        <div class="both">
+          <p><strong>Special Defense:&nbsp;</strong> {{ activePokemon.stats[4].base_stat }}</p>
+          <p><strong>Speed:&nbsp;</strong> {{ activePokemon.stats[5].base_stat }}</p>
+        </div>
+
+        <p><strong>Types:&nbsp;</strong> 
+          <ng-container *ngFor="let type of activePokemon.types; let last = last">
+            {{ type.type.name }}{{ !last ? ', ' : '' }}
+          </ng-container>
+        </p>
+        <p><strong>ability:&nbsp;</strong> 
+          <ng-container *ngFor="let ability of activePokemon.abilities; let last = last">
+            {{ ability.ability.name }}{{ !last ? ', ' : '' }}
+          </ng-container>
+        </p>
+
+        <p><strong>moves:&nbsp;</strong> 
+          <span class="scroll">
+            <ng-container *ngFor="let move of activePokemon.moves; let last = last">
+              {{ move.move.name }}{{ !last ? ', ' : '' }}
+            </ng-container>
+          </span>
+        </p>
+
+      </div><hr>
+      <button class="close-btn" (click)="active(null)">close</button>
+    </div>
+  </div>
+</div>
