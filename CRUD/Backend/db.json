@@ -1,0 +1,20 @@
+{
+  "books": [
+    {
+      "id": "2",
+      "name": "Rich Dad, Poor Dad",
+      "image": "https://m.media-amazon.com/images/I/81BE7eeKzAL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Deep Work",
+      "image": "https://rukminim2.flixcart.com/image/850/1000/xif0q/regionalbooks/u/c/u/deep-work-gujarati-book-original-imagvwu6hwwuepgj.jpeg?q=90&crop=false"
+    },
+    {
+      "id": "4",
+      "name": "Story",
+      "image": "https://cdnp.targetpublications.org/media/catalog/product/cache/f63311a2a00c092df9b3c20ab1a8a20f/1/2/12473_2_1.jpg"
+    }
+  ],
+  "movies": []
+}

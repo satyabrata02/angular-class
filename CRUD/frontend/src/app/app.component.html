@@ -1,0 +1,11 @@
+<h1>CRUD APPLICATION</h1>
+<div class="books">
+  <div class="book" *ngFor="let b of books;">
+    <img src={{b.image}} alt={{b.name}}>
+    <h2>{{b.name}}</h2>
+    <div>
+      <button>Update(✏️)</button>
+      <button (click)="remove(b.id)">Delete(❌)</button>
+    </div>
+  </div>
+</div>
