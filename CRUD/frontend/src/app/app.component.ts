@@ -18,7 +18,7 @@ export class AppComponent {
   }
   add(){
     this.showForm = true;
-    document.body.style.backgroundColor='rgba(0,0,0,0.4)'
+    document.body.style.backgroundColor='rgba(0,0,0,0.4)';
   }
   remove(id:number){
     let d = confirm("Are you sure?");
@@ -38,32 +38,32 @@ export class AppComponent {
     this.bookId=id
     this.editMode = true;
     this.showForm = true;
-    document.body.style.backgroundColor='rgba(0,0,0,0.4)'
+    document.body.style.backgroundColor='rgba(0,0,0,0.4)';
   }
   submitData(){
     if (this.editMode) {
        let newBook = {
          id: this.bookId,
          name: this.bookName,
-         image: this.bookImageLink,
+         image: this.bookImageLink
       };
       this.cs.putData(newBook, this.bookId).subscribe((data) => {
         console.log(data);
         this.showForm = false;
-        window.location.reload()
+        window.location.reload();
       }
       )
     } else {
       let newBook = {
          id: this.bookId,
          name: this.bookName,
-         image: this.bookImageLink,
+         image: this.bookImageLink
        };
        this.cs.postData(newBook).subscribe((data) => {
-         console.log(data);
-         window.location.reload();
-         this.stop();
-       });
+        console.log(data);
+        window.location.reload();
+        this.stop();  // this.showForm = false;
+      });
     }
   }
 }
