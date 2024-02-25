@@ -22,3 +22,15 @@ button{
     margin: 20px;
     cursor: pointer;
 }
+.myForm{
+   position: absolute;
+   background-color: aqua;
+   top: 30%;
+   left: 40%;
+   z-index:2;
+   padding: 50px;
+}
+.myForm input{
+   background-color: white;
+   color: black;
+}
