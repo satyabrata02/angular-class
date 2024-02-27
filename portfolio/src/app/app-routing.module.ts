@@ -8,7 +8,8 @@ import { ProjectComponent } from './project/project.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, 
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent, 
     children: [
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
