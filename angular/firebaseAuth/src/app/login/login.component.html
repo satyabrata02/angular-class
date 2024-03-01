@@ -1,4 +1,4 @@
-<form action="" #fm="ngForm" (ngSubmit)="login(em,pwd)">
+<form #fm="ngForm" (ngSubmit)="login(em,pwd)">
     <input type="email" name="email" placeholder="Enter the email" ngModel #em="ngModel" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required><br>
     <div class="error" *ngIf="(fm.submitted||em.touched) && em.errors?.['required']">Email required</div>
     <div class="error" *ngIf="(fm.submitted||em.touched) && em.errors?.['pattern']">Please enter proper email</div><br>
