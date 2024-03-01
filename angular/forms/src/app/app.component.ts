@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'forms';
+  submit(f:any){
+    alert("form submiteed successfully")
+    console.log(f.form.value)
+    localStorage.setItem("formDetails",JSON.stringify(f.form.value))
+  }
 }
