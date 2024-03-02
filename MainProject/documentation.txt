@@ -20,11 +20,14 @@ D:\Angular-Workshop\MainProject\ecommerce>ng generate component login
 
 D:\Angular-Workshop\MainProject\ecommerce>ng generate component register
 
-D:\Angular-Workshop\MainProject\ecommerce>ng generate component dashboard
-
 D:\Angular-Workshop\MainProject\ecommerce>ng generate component notfound
 
 D:\Angular-Workshop\MainProject\ecommerce>ng generate component cart
+
+D:\Angular-Workshop\MainProject\ecommerce>ng generate component dashboard
+
+D:\Angular-Workshop\MainProject\ecommerce>ng generate guard dashboard
+? Which type of guard would you like to create? CanActivate
 
 D:\Angular-Workshop\MainProject\ecommerce>ng generate service api
 
@@ -36,6 +39,10 @@ D:\Angular-Workshop\MainProject\ecommerce>ng generate module material
 
 D:\Angular-Workshop\MainProject\ecommerce>ng generate module pages
 
-D:\Angular-Workshop\MainProject\ecommerce>ng generate guard dashboard
-? Which type of guard would you like to create? CanActivate
+D:\Angular-Workshop\MainProject\ecommerce>ng add ngx-bootstrap
+The package ngx-bootstrap@12.0.0 will be installed and executed.
+Would you like to proceed? Yes
 
+D:\Angular-Workshop\MainProject\ecommerce>npm install @fortawesome/fontawesome-free --save
+
+D:\Angular-Workshop\MainProject\ecommerce>npm install firebase @angular/fire

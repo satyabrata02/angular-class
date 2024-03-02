@@ -1,1 +1,44 @@
-<p>header works!</p>
+<nav [ngClass]="{'active': isOpened}">
+    <div class="nav-bar">
+        <i class="fas fa-bars sidebarOpen" (click)="openSlide()"></i>
+        <span class="logo navLogo"><a href="#">S-Mart</a></span>
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="#">S-Mart</a></span>
+                <i class="fas fa-xmark siderbarClose" (click)="openSlide()"></i>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="spl-nav">Login</a></li>
+                <li><a href="#" class="spl-nav">Register</a></li>
+            </ul>
+        </div>
+        <div class="darkLight-searchBox-cart">
+            <div class="dark-light" (click)="darkOn()" [ngClass]="{'active': isDarkMode}">
+                
+                <i class="fas fa-sun sun" *ngIf="isDarkMode else dm"></i>
+                <ng-template #dm>
+                    <i class="fas fa-moon moon"></i>
+                </ng-template>
+            </div>
+            <div class="searchBox">
+                <div class="searchToggle" (click)="searchOn()" [ngClass]="{'active': isSearchMode}">
+                    <i class="fas fa-xmark cancel"></i>
+                    <i class="fas fa-magnifying-glass search"></i>
+                </div>
+
+                <div class="search-field">
+                    <input type="text" placeholder="Search items">
+                    <i class="fas fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="cart">
+                <i class="fas fa-cart-shopping"></i>
+            </div>
+        </div>
+    </div>
+</nav>
