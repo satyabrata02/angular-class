@@ -9,7 +9,7 @@ export class HeaderComponent {
   isDarkMode = false;
   isSearchMode = false;
   isOpened = false;
-  
+
   constructor(){
     let getMode = localStorage.getItem('mode');
     if (getMode === 'dark-mode') {

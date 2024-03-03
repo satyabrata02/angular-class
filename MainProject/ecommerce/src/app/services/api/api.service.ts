@@ -15,4 +15,7 @@ export class ApiService {
   getProduct(id:number){
     return this.hc.get(`${API_URL}/${id}`);
   }
+  getCategoryProduct(cate:any){
+    return this.hc.get(`${API_URL}/category/${cate}`);
+  }
 }

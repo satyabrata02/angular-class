@@ -18,9 +18,10 @@
     --nav-btn: #03a9f4;
     --nav-btn-hvr: #00d5ff;
     --footer-bg: #9e9e9e;
+    --notfount-clr: #a002ab;
 }
 body{
-    height: 100vh;
+    min-height: 100vh;
     background: var(--body-img);
     background-size: cover;
     background-position: center;
@@ -36,4 +37,5 @@ body.dark{
     --nav-btn: #03a9f4;
     --nav-btn-hvr: #00d5ff;
     --footer-bg: #5a5a5a;
+    --notfount-clr: #f239ff;
 }
