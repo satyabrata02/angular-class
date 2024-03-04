@@ -37,9 +37,9 @@
                 </div>
             </div>
             <div class="cart">
-                <i routerLink="/cart" class="fas fa-cart-shopping"></i>
+                <i routerLink="/cart" class="fas fa-cart-shopping" (click)="searchHide()"></i>
             </div>
-            <div routerLink="/cart" class="count">{{c}}</div>
+            <div routerLink="/cart" class="count" (click)="searchHide()">{{c}}</div>
         </div>
     </div>
 </nav>
