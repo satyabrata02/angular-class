@@ -8,7 +8,7 @@
         <div class="card" *ngFor="let p of products">
             <img src={{p.thumbnail}} alt={{p.title}}>
             <div class="card-body">
-                <a class="card-title" target="_blank" routerLink="/product/{{p.id}}">{{p.title}}</a>
+                <a class="card-title" routerLink="/product/{{p.id}}">{{p.title}}</a>
                 <div class="avl">
                     <span class="rating">{{p.rating}}<i class="fas fa-star"></i></span>
                     <span>({{p.stock}})</span>
