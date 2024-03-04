@@ -104,8 +104,8 @@
     gap: 15px;
 }
 .wrapper .text .content .buy button{
-    width: 130px;
     color: #fff;
+    width: 145px;
     font-size: 15px;
     outline: none;
     border: 0;
@@ -114,6 +114,9 @@
     padding: 10px 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+.wrapper .text .content .buy button:disabled{
+    background-color: #d67b05;
 }
 .wrapper .text .content .buy button:hover{
     background-color: #d67b05;

@@ -14,6 +14,7 @@ export class ProductComponent {
   count: number = 0;
   isDisabled = false;
   isDisabled2 = true;
+  isItemStored = false;
   
   constructor(private route:ActivatedRoute, private as:ApiService){
     this.route.params.subscribe((data) => {
@@ -44,5 +45,9 @@ export class ProductComponent {
     this.fullImg = document.querySelector('#imagebox');
     console.log(this.fullImg)
     this.fullImg.src = smallImg.src;
+  }
+  addtocart(prod:Object){
+    this.as.addValue(prod);
+    this.isItemStored = true;
   }
 }
