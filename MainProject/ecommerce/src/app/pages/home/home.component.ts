@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent {
   title = 'S-Mart';
+  
   constructor(private titleService: Title){ 
     titleService.setTitle(this.title);
   }

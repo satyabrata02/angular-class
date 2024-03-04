@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class LoginComponent {
   title = 'Login';
+  
   constructor(private titleService: Title){ 
     titleService.setTitle(this.title);
   }

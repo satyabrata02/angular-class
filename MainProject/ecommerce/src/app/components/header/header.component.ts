@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +10,24 @@ export class HeaderComponent {
   isDarkMode = false;
   isSearchMode = false;
   isOpened = false;
+  c!: number;
+  pagename!: string;
+  st:string = "";
 
-  constructor(){
+  constructor(private as:ApiService){
+    this.as.currentPageName.subscribe(pageName => {
+      this.pagename = pageName;
+    });
+
+    this.as.cartSubObs.subscribe((data)=>this.c=data);
     let getMode = localStorage.getItem('mode');
     if (getMode === 'dark-mode') {
       document.body.classList.add('dark');
       this.isDarkMode = true;
     }
+  }
+  searchHide(){
+    this.pagename = "";
   }
   darkOn(){
     this.isDarkMode = !this.isDarkMode;
@@ -39,5 +51,9 @@ export class HeaderComponent {
    if (!clickedElement.classList.contains('sidebarOpen') && !clickedElement.classList.contains('menu')) {
       this.isOpened = false;
     }
+  }
+
+  searchProduct(){
+    this.as.sendSearchValue(this.st);
   }
 }
