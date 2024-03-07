@@ -10,7 +10,7 @@
     width: 100%;
     padding: 20px 25px;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: var(--text-color);
 }
 .container .form .form-content h3{
     font-size: 28px;
@@ -40,7 +40,8 @@
 .form-content form .field input{
     padding: 0 15px;
     outline: none;
-    border: 1px solid #cacaca;
+    background: var(--text-color);
+    border: 1px solid var(--footer-bg);
 }
 .form-content form .password{
     margin-top: 30px;
@@ -96,7 +97,7 @@
     height: 1px;
     width: 100%;
     margin: 20px 0;
-    background-color: #d4d4d4;
+    background-color: var(--footer-bg);
 }
 .container .form .line::before{
     content: 'Or';
@@ -104,7 +105,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: var(--text-color);
     color: #232836;
     padding: 0 15px;
 }
@@ -137,11 +138,10 @@ a.google img.google-img{
     transform: translateY(-50%);
 }
 a.google{
-    border: 1.5px solid #cacaca;
+    border: 1.5px solid var(--footer-bg);
 }
 a.google span{
-    color: #232836;
-    opacity: 0.6;
+    color: var(--footer-bg);
     font-weight: 500;
 }
 a.google img.google-img{
