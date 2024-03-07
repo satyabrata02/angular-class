@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   title = 'Login';
   showPassword = false;
+  logoutValue = true;
   
-  constructor(private titleService: Title, private as:AuthService,private route:Router){ 
+  constructor(private titleService: Title, private auth:AuthService, private route:Router){ 
     titleService.setTitle(this.title);
   }
 
@@ -21,12 +22,14 @@ export class LoginComponent {
   }
 
   login(email: any, password: any) {
-  
-    this.as.login(email.control.value, password.control.value).then((val) => {
-        console.log(val);
+    
+    this.auth.login(email.control.value, password.control.value).then((val) => {
         alert('successfully logged in');
-        this.route.navigateByUrl('/dashboard')
+        localStorage.setItem('token', Math.random().toString());
+        this.auth.setBooleanValue(this.logoutValue);
+        this.route.navigateByUrl('/dashboard');
       })
       .catch((val) => alert('email or password not matched'));
   }
+
 }

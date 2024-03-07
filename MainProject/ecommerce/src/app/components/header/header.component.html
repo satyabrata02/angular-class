@@ -9,12 +9,22 @@
             </div>
 
             <ul class="nav-links">
-                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="searchHide()">Home</a></li>
+                <li *ngIf="logoutBtn else homeNav"><a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="searchHide()">Home</a></li>
+
+                <ng-template #homeNav>
+                    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="searchHide()">Home</a></li>
+                </ng-template>
+                
                 <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
                 <li><a routerLink="/about" routerLinkActive="active" (click)="searchHide()">About</a></li>
                 <li><a routerLink="/contact" routerLinkActive="active" (click)="searchHide()">Contact</a></li>
-                <li><a routerLink="/login" class="spl-nav" (click)="searchHide()">Login</a></li>
-                <li><a routerLink="/register" class="spl-nav" (click)="searchHide()">Register</a></li>
+
+                <li style="cursor: pointer;" *ngIf="logoutBtn else otherBtn"><a class="spl-nav" (click)="logout()">Logout</a></li>
+
+                <ng-template #otherBtn>
+                    <li><a routerLink="/login" class="spl-nav" (click)="searchHide()">Login</a></li>
+                </ng-template>
+
             </ul>
         </div>
         <div class="darkLight-searchBox-cart">

@@ -1,20 +1,23 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   isDarkMode = false;
   isSearchMode = false;
   isOpened = false;
   c!: number;
   pagename!: string;
   st:string = "";
+  logoutBtn!:boolean;
 
-  constructor(private as:ApiService){
+  constructor(private as:ApiService, private auth:AuthService, private route:Router){
     this.as.currentPageName.subscribe(pageName => {
       this.pagename = pageName;
     });
@@ -25,6 +28,15 @@ export class HeaderComponent {
       document.body.classList.add('dark');
       this.isDarkMode = true;
     }
+
+  }
+
+  ngOnInit(): void {
+    this.auth.getBooleanValue().subscribe(value => {
+      this.logoutBtn = value;
+    });
+    const token = localStorage.getItem('token');
+    if(token) { this.logoutBtn = true; }
   }
   searchHide(){
     this.pagename = "";
@@ -55,5 +67,11 @@ export class HeaderComponent {
 
   searchProduct(){
     this.as.sendSearchValue(this.st);
+  }
+
+  logout(){
+    alert('successfully logged in');
+    this.logoutBtn = false;
+    this.auth.logout();
   }
 }
