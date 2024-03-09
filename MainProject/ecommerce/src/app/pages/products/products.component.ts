@@ -12,10 +12,10 @@ export class ProductsComponent {
   title = 'Products';
   products: any[] = [];
   categories: { [key: string]: any[] } = {};
-  isDisabledRmv = true;
-  c!: number;
   pageName = 'products';
   searchts!: string;
+  productLength: any[] = [];
+  productsArray: any[] = [];
 
   constructor(private titleService: Title, private as:ApiService){
     this.as.searchTs.subscribe(searchTs => {
@@ -27,7 +27,7 @@ export class ProductsComponent {
     });
 
     this.as.getActivePage(this.pageName);
-    this.as.cartSubObs.subscribe((data)=>this.c=data);
+    // this.as.cartSubObs.subscribe((data)=>this.c=data);
 
     titleService.setTitle(this.title);
     this.as.getProducts().subscribe((data:any) => {
@@ -42,6 +42,12 @@ export class ProductsComponent {
         }
       });
     });
+
+    const storedProducts = localStorage.getItem('myProducts');
+    if (storedProducts) {
+      this.productLength = JSON.parse(storedProducts);
+    }
+    // console.log(this.productLength.length);
     
   }
 
@@ -54,16 +60,33 @@ export class ProductsComponent {
     this.as.getCategoryProduct(e.target.textContent).subscribe((data:any) => (this.products = data.products));
   }
 
-  
   addtocart(prod:Object){
-    this.as.addValue(prod);
-    this.isDisabledRmv = false;
+    const storedProducts = localStorage.getItem('myProducts');
+    if (storedProducts) {
+      this.productsArray = JSON.parse(storedProducts);
+    }
+    this.productsArray.push(prod);
+    const updatedProducts = JSON.stringify(this.productsArray);
+    localStorage.setItem('myProducts', updatedProducts);
+
+    this.productLength = this.productsArray;
+    this.as.updateCartCount(this.productLength.length);
+    console.log(this.productLength.length);
   }
-  removecart(prod:Object){
-    if(this.c <= 0){
-      this.isDisabledRmv = true;
-    }else{
-      this.as.removeValue(prod);
+  removecart(id:number){
+    const index = this.productLength.findIndex((item: any) => {
+      return item.id === id;
+    });
+
+    if (index !== -1) {
+      this.productLength.splice(index, 1);
+      const updatedProducts = JSON.stringify(this.productLength);
+      localStorage.setItem('myProducts', updatedProducts);
+      
+      this.as.updateCartCount(this.productLength.length);
+      console.log(this.productLength.length);
+    } else {
+        console.log("Item not found in Cart.");
     }
   }
 }

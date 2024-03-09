@@ -11,20 +11,26 @@ export class ProductComponent {
   id: any;
   product: any;
   fullImg: any;
-  count: number = 0;
+  count: number = 1;
   isDisabled = false;
   isDisabled2 = true;
   isItemStored = false;
+  productLength: any[] = [];
   
   constructor(private route:ActivatedRoute, private as:ApiService){
     this.route.params.subscribe((data) => {
       this.id = data['id'];
       this.as.getProduct(this.id).subscribe((data:any) => this.product = data)
     })
+
+    const storedProducts = localStorage.getItem('myProducts');
+    if (storedProducts) {
+      this.productLength = JSON.parse(storedProducts);
+    }
   }
 
   incr() {
-    if (this.count >= 10) {
+    if (this.count >= 5) {
       this.isDisabled=true;
     }else {
        this.count++;
@@ -32,7 +38,7 @@ export class ProductComponent {
     }
   }
   decr() {
-    if (this.count <= 0) {
+    if (this.count <= 1) {
       this.isDisabled2=true;
     }else {
        this.count--;
@@ -47,7 +53,22 @@ export class ProductComponent {
     this.fullImg.src = smallImg.src;
   }
   addtocart(prod:Object){
-    this.as.addValue(prod);
+    const storedProducts = localStorage.getItem('myProducts');
+    let productsArray: any[] = [];
+    if (storedProducts) {
+      productsArray = JSON.parse(storedProducts);
+    }
+    
+    for (let i = 0; i < this.count; i++) {
+      productsArray.push(prod);
+    }
+
+    const updatedProducts = JSON.stringify(productsArray);
+    localStorage.setItem('myProducts', updatedProducts);
+
+    this.productLength = productsArray;
+    this.as.updateCartCount(this.productLength.length);
+    console.log(this.productLength.length);
     this.isItemStored = true;
   }
 }

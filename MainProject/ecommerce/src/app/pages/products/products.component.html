@@ -20,7 +20,7 @@
             </div>
             <div class="cartBtn">
                 <button (click)="addtocart(p)">Add to cart</button>
-                <button (click)="removecart(p)" [disabled]="isDisabledRmv">Remove</button>
+                <button (click)="removecart(p.id)">Remove</button>
             </div>
         </div>
 

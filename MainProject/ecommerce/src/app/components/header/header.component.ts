@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit{
   pagename!: string;
   st:string = "";
   logoutBtn!:boolean;
+  productLength: any[] = [];
 
   constructor(private as:ApiService, private auth:AuthService, private route:Router){
     this.as.currentPageName.subscribe(pageName => {
@@ -23,6 +24,12 @@ export class HeaderComponent implements OnInit{
     });
 
     this.as.cartSubObs.subscribe((data)=>this.c=data);
+    const storedProducts = localStorage.getItem('myProducts');
+    if (storedProducts) {
+      this.productLength = JSON.parse(storedProducts);
+    }
+    this.c = this.productLength.length;
+
     let getMode = localStorage.getItem('mode');
     if (getMode === 'dark-mode') {
       document.body.classList.add('dark');
