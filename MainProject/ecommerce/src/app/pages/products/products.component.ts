@@ -24,14 +24,16 @@ export class ProductsComponent {
       this.as.getFilterProduct(this.searchts).subscribe((data:any) => {
         this.products = data.products;
       })
+
     });
 
     this.as.getActivePage(this.pageName);
     // this.as.cartSubObs.subscribe((data)=>this.c=data);
 
     titleService.setTitle(this.title);
+
     this.as.getProducts().subscribe((data:any) => {
-      this.products = data.products;
+      this.products = data.products.map((product: any) => ({ ...product, count: 1, isDisabled: false, isDisabled2: true }));
       
       this.products.forEach((product: any) => {
         const category = product.category;
@@ -47,7 +49,6 @@ export class ProductsComponent {
     if (storedProducts) {
       this.productLength = JSON.parse(storedProducts);
     }
-    // console.log(this.productLength.length);
     
   }
 
@@ -65,6 +66,7 @@ export class ProductsComponent {
     if (storedProducts) {
       this.productsArray = JSON.parse(storedProducts);
     }
+    
     this.productsArray.push(prod);
     const updatedProducts = JSON.stringify(this.productsArray);
     localStorage.setItem('myProducts', updatedProducts);

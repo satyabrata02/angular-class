@@ -52,6 +52,7 @@ export class ProductComponent {
     console.log(this.fullImg)
     this.fullImg.src = smallImg.src;
   }
+  
   addtocart(prod:Object){
     const storedProducts = localStorage.getItem('myProducts');
     let productsArray: any[] = [];

@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit{
     });
 
     this.as.cartSubObs.subscribe((data)=>this.c=data);
+    
     const storedProducts = localStorage.getItem('myProducts');
     if (storedProducts) {
       this.productLength = JSON.parse(storedProducts);

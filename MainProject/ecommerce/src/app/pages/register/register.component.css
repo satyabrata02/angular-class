@@ -84,7 +84,81 @@ form .button input[type="submit"]:hover{
     color: red;
     font-size: small;
 }
-@media (max-width: 630px){
+.container .line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 20px 0;
+    background-color: var(--footer-bg);
+}
+.container .line::before{
+    content: 'Or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--text-color);
+    color: #232836;
+    padding: 0 15px;
+}
+.container .all-media{
+    display: flex;
+    justify-content: space-between;
+}
+.container .all-media .media-options{
+    width: calc(100% / 2 - 20px);
+    height: 45px;
+    position: relative;
+}
+.all-media .media-options a{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.all-media .media-options a.facebook{
+    color: #fff;
+    background-color: #4267b2;
+}
+a.facebook .facebook-icon{
+    height: 28px;
+    width: 28px;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0171d3;
+    background-color: #fff;
+}
+.facebook-icon,
+a.google img.google-img{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+ a.google{
+    border: 1.5px solid var(--footer-bg);
+}
+a.google span{
+    color: var(--footer-bg);
+    font-weight: 500;
+}
+a.google img.google-img{
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+}
+.all-media .media-options .field span.g,
+.all-media .media-options .field span.f{
+    display: none;
+}
+
+@media (max-width: 670px){
     .container{
         max-width: 100%;
     }
@@ -98,5 +172,28 @@ form .button input[type="submit"]:hover{
     }
     .user-details::-webkit-scrollbar{
         width: 0;
+    }
+    .all-media .media-options .field span.g,
+    .all-media .media-options .field span.f{
+        display: block;
+    }
+    .all-media .media-options .field span.lwg,
+    .all-media .media-options .field span.lwf{
+        display: none;
+    }
+    .container .all-media .media-options{
+        width: 45%;
+    }
+}
+@media (max-width: 500px){
+    .all-media .media-options .field span.g,
+    .all-media .media-options .field span.f{
+        display: none;
+    }
+    .facebook-icon,
+    a.google img.google-img{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
