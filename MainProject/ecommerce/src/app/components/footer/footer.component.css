@@ -108,9 +108,12 @@ footer .main-content .box .content::after{
 .main-content .right form input{
     height: 35px;
 }
+.main-content .right form textarea{
+    resize: none;
+}
 .main-content .right form input:focus,
 .main-content .right form textarea:focus{
-    border: 1.5px solid #0c00ed;
+    border: 1px solid #0c00ed;
 }
 .main-content .right form .contact-us-btn{
     margin-top: 10px;

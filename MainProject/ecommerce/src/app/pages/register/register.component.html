@@ -17,7 +17,7 @@
                     <div class="error" *ngIf="(fm.submitted||phno.touched) && phno.errors?.['maxlength']">Enter Valid Number</div>
                 </div>
                 <div class="input-box">
-                    <span class="details">Email</span>
+                    <span class="details">Email ID</span>
                     <input type="email" name="email" ngModel #em="ngModel" placeholder="Enter Your Email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required>
 
                     <div class="error" *ngIf="(fm.submitted||em.touched) && em.errors?.['required']">Email required</div>
