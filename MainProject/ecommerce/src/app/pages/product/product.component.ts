@@ -1,5 +1,5 @@
-import { Component, ElementRef  } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
@@ -17,10 +17,14 @@ export class ProductComponent {
   isItemStored = false;
   productLength: any[] = [];
   
-  constructor(private route:ActivatedRoute, private as:ApiService){
-    this.route.params.subscribe((data) => {
+  constructor(private router:ActivatedRoute, private as:ApiService, private route:Router){
+    this.router.params.subscribe((data) => {
       this.id = data['id'];
-      this.as.getProduct(this.id).subscribe((data:any) => this.product = data)
+
+      this.as.getProduct(this.id).subscribe((data:any) => {
+        this.product = data;
+        // console.log(this.product);
+      })
     })
 
     const storedProducts = localStorage.getItem('myProducts');
@@ -47,9 +51,9 @@ export class ProductComponent {
   }
 
   clicking(smallImg:any){
-    console.log(smallImg.src);
+    // console.log(smallImg.src);
     this.fullImg = document.querySelector('#imagebox');
-    console.log(this.fullImg)
+    // console.log(this.fullImg);
     this.fullImg.src = smallImg.src;
   }
   
@@ -71,5 +75,18 @@ export class ProductComponent {
     this.as.updateCartCount(this.productLength.length);
     console.log(this.productLength.length);
     this.isItemStored = true;
+  }
+
+  checkOut(price: number){
+    console.log(price);
+    const token = localStorage.getItem('token');
+    if(token) {
+      console.log("Go to payment page");
+    } else {
+      const confirmed = window.confirm("Please login first. Do you want to proceed to the login page?");
+      if (confirmed) {
+        this.route.navigateByUrl('/login');
+      }
+    }
   }
 }

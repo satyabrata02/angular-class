@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services/api/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,8 +11,9 @@ import { ApiService } from '../../services/api/api.service';
 export class CartComponent {
   title = 'Cart';
   productLength: any[] = [];
+  checkOutPrice! : number;
 
-  constructor(private titleService: Title, private as:ApiService){ 
+  constructor(private titleService: Title, private as:ApiService, private route:Router){ 
     titleService.setTitle(this.title);
     
     const storedProducts = localStorage.getItem('myProducts');
@@ -42,7 +44,7 @@ export class CartComponent {
   }
   saveToLocalStorage() {
     localStorage.setItem('myProducts', JSON.stringify(this.productLength));
-}
+  }
 
   calculateTotalPrice(item: any): number {
     return item.price * item.count;
@@ -50,10 +52,11 @@ export class CartComponent {
   TotalPrice(): number {
     let totalPrice = 0;
     for (const item of this.productLength) {
-        totalPrice += item.price * item.count;
+      totalPrice += item.price * item.count;
     }
+    this.checkOutPrice = totalPrice;
     return totalPrice;
-}
+  }
 
   removecart(id:number){
     const index = this.productLength.findIndex((item: any) => {
@@ -69,6 +72,22 @@ export class CartComponent {
       console.log(this.productLength.length);
     } else {
         console.log("Item not found in Cart.");
+    }
+  }
+  checkOut(){
+    const token = localStorage.getItem('token');
+    if(this.checkOutPrice === 0){
+      alert("Cart is empty. \nPlease add item.");
+    }else{
+      if(token) {
+        console.log("Go to payment page");
+      } else{
+        const confirmed = window.confirm("Please login first. Do you want to proceed to the login page?");
+        if (confirmed) {
+          this.route.navigateByUrl('/login');
+        }
+      }
+      console.log(this.checkOutPrice);
     }
   }
 }

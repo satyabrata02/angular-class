@@ -5,7 +5,7 @@
                 <div class="small-images">
                     <ng-container *ngFor="let img of product.images; let last = last">
                         <img *ngIf="!last" src="{{ img }}" alt="" (click)="clicking($event.target)">
-                      </ng-container>
+                    </ng-container>
                 </div>
                 <div class="main-images">
                     <img src={{product.thumbnail}} alt="" id="imagebox">
@@ -34,7 +34,7 @@
                     <button (click)="addtocart(product)" [disabled]="isItemStored">
                         <span class="fas fa-shopping-cart"></span>{{isItemStored?"Added to Cart":"Add to Cart"}}
                     </button>
-                    <button class="buynow-btn">
+                    <button class="buynow-btn" (click)="checkOut(product.price)">
                         <span class="fas fa-shopping-cart"></span>Buy now
                     </button>
                 </div>

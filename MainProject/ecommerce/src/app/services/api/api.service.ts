@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from '../../environments/environments';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,15 @@ export class ApiService {
     return this.hc.get(`${API_URL}`);
   }
   getProduct(id:number){
-    return this.hc.get(`${API_URL}/${id}`);
+    return this.hc.get(`${API_URL}/${id}`).pipe(
+      map((data: any) => {
+        if (Array.isArray(data)) {
+          return data.map((item: any) => ({ ...item, count: 1, isDisabled: false, isDisabled2: true }));
+        } else {
+          return { ...data, count: 1, isDisabled: false, isDisabled2: true };
+        }
+      })
+    );
   }
   getCategoryProduct(cate:any){
     return this.hc.get(`${API_URL}/category/${cate}`);

@@ -25,10 +25,14 @@ th{
 td{
     padding: 10px 5px;
 }
+.cart-info p{
+    cursor: pointer;
+}
 td img{
     width: 80px;
     height: 80px;
     margin-right: 10px;
+    cursor: pointer;
 }
 td button{
     color: #ff523b;

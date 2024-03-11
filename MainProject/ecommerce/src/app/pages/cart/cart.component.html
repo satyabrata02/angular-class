@@ -9,9 +9,9 @@
             <tr *ngFor="let item of productLength">
                 <td>
                     <div class="cart-info">
-                        <img src={{item.thumbnail}} alt={{item.title}}>
+                        <img src={{item.thumbnail}} alt={{item.title}} routerLink="/product/{{item.id}}">
                         <div>
-                            <p>{{item.title}}</p>
+                            <p routerLink="/product/{{item.id}}">{{item.title}}</p>
                             <small>price: {{item.price | currency}}</small><br>
                             <button (click)="removecart(item.id)">Remove</button>
                         </div>
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <div class="btns">
-                        <button>Checkout</button>
+                        <button (click)="checkOut()">Checkout</button>
                     </div>
                 </tr>
             </table>

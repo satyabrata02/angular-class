@@ -78,8 +78,10 @@ export class HeaderComponent implements OnInit{
   }
 
   logout(){
-    alert('successfully logged in');
-    this.logoutBtn = false;
-    this.auth.logout();
+    const confirmed = window.confirm("Do you want to logout ?");
+    if (confirmed) {
+      this.logoutBtn = false;
+      this.auth.logout();
+    }
   }
 }
