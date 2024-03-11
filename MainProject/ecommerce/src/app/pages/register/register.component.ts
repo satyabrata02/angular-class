@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { firebaseConfig } from '../../environments/environments';
+import { DbService } from '../../services/db/db.service';
+import { Users } from '../../modal/users';
 
 @Component({
   selector: 'app-register',
@@ -12,12 +12,26 @@ import { firebaseConfig } from '../../environments/environments';
 })
 export class RegisterComponent {
   title = 'Register';
+  userObj : Users = {
+    username: '',
+    phno: '',
+    email: '',
+    password: '',
+    gender: ''
+  };
+
+  username: string = '';
+  phoneno: string = '';
+  emailid: string = '';
+  pass: string = '';
+  gen: string = '';
+
 
   constructor(
     private titleService: Title, 
     private as: AuthService, 
     private router: Router,
-    private hc: HttpClient){ 
+    private data:DbService){ 
 
       titleService.setTitle(this.title);
   }
@@ -32,6 +46,8 @@ export class RegisterComponent {
     }
   }
 
+  
+
   submit(form: any, username: any, phno: any, email: any, password: any, gender: any) {
     
     if( form.value.email === '' ) {
@@ -43,25 +59,23 @@ export class RegisterComponent {
           console.log(val);
         }).catch((err) => console.log(err))
 
-      const udata = {
-        username: username.value,
-        phno: phno.value,
-        email: email.value,
-        password: password.value,
-        gender: gender.value
-      };
+      this.userObj.username = this.username;
+      this.userObj.phno = this.phoneno;
+      this.userObj.email = this.emailid;
+      this.userObj.password = this.pass;
+      this.userObj.gender = this.gen;
 
-      this.hc.post(firebaseConfig.databaseURL+'/users.json',udata)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+      this.data.addUsers(this.userObj);
     }
     alert("You are Successfully Registered");
     this.router.navigate([ '/login' ]);
+  }
+
+  loginWithGoogle(){
+    this.as.googleSignin();
+  }
+
+  loginWithFacebook(){
+    alert("This feature is not available.")
   }
 }

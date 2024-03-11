@@ -78,10 +78,11 @@ export class ProductComponent {
   }
 
   checkOut(price: number){
-    console.log(price);
+    // console.log(price);
     const token = localStorage.getItem('token');
     if(token) {
       console.log("Go to payment page");
+
     } else {
       const confirmed = window.confirm("Please login first. Do you want to proceed to the login page?");
       if (confirmed) {

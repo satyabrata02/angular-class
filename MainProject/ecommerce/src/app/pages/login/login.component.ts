@@ -22,14 +22,23 @@ export class LoginComponent {
   }
 
   login(email: any, password: any) {
-    
+
     this.auth.login(email.control.value, password.control.value).then((val) => {
         alert('successfully logged in');
+        localStorage.setItem('currentUser', email.value);
         localStorage.setItem('token', Math.random().toString());
         this.auth.setBooleanValue(this.logoutValue);
         this.route.navigateByUrl('/dashboard');
       })
       .catch((val) => alert('email or password not matched'));
+  }
+
+  loginWithGoogle(){
+    this.auth.googleSignin();
+  }
+
+  loginWithFacebook(){
+    alert("This feature is not available.")
   }
 
 }

@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../services/api/api.service';
 import { Router } from '@angular/router';
 
+declare var Rozarpay: any;
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
