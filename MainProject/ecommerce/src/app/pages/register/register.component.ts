@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { DbService } from '../../services/db/db.service';
-import { Users } from '../../modal/users';
+import { Users } from '../../model/users';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +12,7 @@ import { Users } from '../../modal/users';
 })
 export class RegisterComponent {
   title = 'Register';
+  logoutValue = true;
   userObj : Users = {
     username: '',
     phno: '',
@@ -29,7 +30,7 @@ export class RegisterComponent {
 
   constructor(
     private titleService: Title, 
-    private as: AuthService, 
+    private auth: AuthService, 
     private router: Router,
     private data:DbService){ 
 
@@ -47,14 +48,13 @@ export class RegisterComponent {
   }
 
   
-
   submit(form: any, username: any, phno: any, email: any, password: any, gender: any) {
     
     if( form.value.email === '' ) {
       alert("please fill the form");
     }
     else {
-      this.as.signup(email.control.value, password.control.value)
+      this.auth.signup(email.control.value, password.control.value)
         .then((val) => {
           console.log(val);
         }).catch((err) => console.log(err))
@@ -72,7 +72,8 @@ export class RegisterComponent {
   }
 
   loginWithGoogle(){
-    this.as.googleSignin();
+    this.auth.setBooleanValue(this.logoutValue);
+    this.auth.googleSignin();
   }
 
   loginWithFacebook(){

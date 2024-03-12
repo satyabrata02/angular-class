@@ -34,6 +34,7 @@ export class LoginComponent {
   }
 
   loginWithGoogle(){
+    this.auth.setBooleanValue(this.logoutValue);
     this.auth.googleSignin();
   }
 

@@ -82,7 +82,7 @@ export class ProductComponent {
     const token = localStorage.getItem('token');
     if(token) {
       console.log("Go to payment page");
-
+      this.as.addProductinDB(this.product);
     } else {
       const confirmed = window.confirm("Please login first. Do you want to proceed to the login page?");
       if (confirmed) {

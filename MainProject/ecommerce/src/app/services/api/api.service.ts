@@ -7,11 +7,8 @@ import { BehaviorSubject, map } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  // emptyproduct:any[]=[];
   private cartSubject = new BehaviorSubject<number>(0);
   cartSubObs = this.cartSubject.asObservable();
-  // private cartItemsSubject = new BehaviorSubject(this.emptyproduct);
-  // cartItemsSubObs = this.cartSubject.asObservable();
   private pageNameSource = new BehaviorSubject<string>('');
   currentPageName = this.pageNameSource.asObservable();
   private searchText = new BehaviorSubject<string>('');
@@ -51,23 +48,5 @@ export class ApiService {
     return this.hc.get(`${API_URL}/search?q=${name}`);
   }
 
-  // addValue(prod:number) {
-  //   const c = this.cartSubject.getValue();
-  //   this.cartSubject.next(c);
-  //   console.log(c);
-  //   // console.log(this.cartSubject.getValue());
-  //   // const items = this.cartItemsSubject.getValue();
-  //   // this.cartItemsSubject.next([ ...items, prod ]);
-  //   // console.log(this.cartItemsSubject.getValue())
-  // }
-  // getCount() {
-  //   return this.cartSubject.getValue();
-  // }
-  // getItems(){
-  //   return this.cartItemsSubject.getValue();
-  // }
-  // removeValue(prod:Object) {
-  //   const c = this.cartSubject.getValue();
-  //   this.cartSubject.next(c - 1);
-  // }
+  addProductinDB(product: any){}
 }

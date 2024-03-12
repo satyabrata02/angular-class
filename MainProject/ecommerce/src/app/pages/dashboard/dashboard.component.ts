@@ -14,21 +14,14 @@ export class DashboardComponent {
 
   constructor(private titleService: Title, private data:DbService){ 
     titleService.setTitle(this.title);
-    const userEmail = localStorage.getItem('currentUser');
+    const userEmail:any = localStorage.getItem('currentUser');
     
-    this.data.getUser().subscribe(res => {
-      this.userList = res.map((e:any) => {
-        const data = e.payload.doc.data();
-        // data.id = e.payload.doc.id;
-        if(data.email === userEmail){
-          this.currentUser = data;
-          console.log(this.currentUser);
-        }
-        
-      })
-    }, err => {
-      console.log(err);
-    })
+    this.data.getUserByEmail(userEmail).subscribe(existingUser => {
+      if (existingUser.length === 1) {
+        this.currentUser = existingUser[0].payload.doc.data();
+        console.log(this.currentUser);
+      }
+    });
 
   }
 }

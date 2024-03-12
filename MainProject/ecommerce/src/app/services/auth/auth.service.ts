@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject } from 'rxjs';
 import { GoogleAuthProvider, FacebookAuthProvider } from '@angular/fire/auth';
 import { DbService } from '../db/db.service';
-import { Users } from '../../modal/users';
+import { Users } from '../../model/users';
 
 @Injectable({
   providedIn: 'root'
@@ -50,27 +50,27 @@ export class AuthService {
   }
 
   googleUserData(){
-    this.data.getUser().subscribe(res => {
-      this.userList = res.map((e:any) => {
-        const data = e.payload.doc.data();
-        if(data.email === this.userEmail){
-          console.log('Existed email');
-        }else{
-          this.userObj.username = this.userName;
-          this.userObj.phno = '';
-          this.userObj.email = this.userEmail;
-          this.userObj.password = '';
-          this.userObj.gender = '';
+    this.data.getUserByEmail(this.userEmail).subscribe(existingUser => {
+      if (existingUser.length === 0) {
+        // User does not exist in Firestore, so add them
+        this.userObj.username = this.userName;
+        this.userObj.phno = '';
+        this.userObj.email = this.userEmail;
+        this.userObj.password = '';
+        this.userObj.gender = '';
 
-          this.data.addUsers(this.userObj);
-        }
-      })
-    }, err => {
-      console.log(err);
-    })
+        this.data.addUsers(this.userObj).then(() => {
+          console.log('User added successfully');
+        }).catch(error => {
+          console.error('Error adding user to Database:', error);
+        });
+      } else {
+        console.log('User with the email already exists');
+      }
+    });
   }
   googleSignin(){
-    return this.auth.signInWithPopup(new GoogleAuthProvider).then(res => {
+    return this.auth.signInWithPopup(new GoogleAuthProvider()).then(res => {
       const user = res?.user;
       if (user) {
         this.userName = user.displayName;
