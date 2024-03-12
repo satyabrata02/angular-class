@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
+import { DbService } from '../../services/db/db.service';
+
+declare var Razorpay: any;
 
 @Component({
   selector: 'app-product',
@@ -16,8 +19,9 @@ export class ProductComponent {
   isDisabled2 = true;
   isItemStored = false;
   productLength: any[] = [];
+  currentUser: any;
   
-  constructor(private router:ActivatedRoute, private as:ApiService, private route:Router){
+  constructor(private router:ActivatedRoute, private as:ApiService, private route:Router, private data:DbService){
     this.router.params.subscribe((data) => {
       this.id = data['id'];
 
@@ -31,6 +35,16 @@ export class ProductComponent {
     if (storedProducts) {
       this.productLength = JSON.parse(storedProducts);
     }
+
+    const userEmail:any = localStorage.getItem('currentUser');
+    
+    this.data.getUserByEmail(userEmail).subscribe(existingUser => {
+      if (existingUser.length === 1) {
+        this.currentUser = existingUser[0].payload.doc.data();
+        console.log(this.currentUser);
+      }
+    });
+
   }
 
   incr() {
@@ -77,11 +91,39 @@ export class ProductComponent {
     this.isItemStored = true;
   }
 
-  checkOut(price: number){
+  checkOut(product: any){
     // console.log(price);
     const token = localStorage.getItem('token');
     if(token) {
-      console.log("Go to payment page");
+      const RozarpayOptions = {
+        description: 'payment for '+product.title,
+        currency: 'INR',
+        amount: product.price * 100,
+        pname: product.title,
+        key: 'rzp_test_UzmHM4EQPTg5qR',
+        prefill: {
+          name: this.currentUser.username,
+          email: this.currentUser.email
+        },
+        theme: {
+          color: '#00bfff',
+        },
+        modal: {
+          ondismiss: () =>{
+            alert('Payment Canceled.')
+          }
+        },
+        brand: product.brand,
+        image: '../../../assets/icon.png',
+      }
+
+      const successCallback = (paymentid: any) => {
+        alert(paymentid);
+      }
+      const errorCallback = (e: any) => {
+        alert(e);
+      }
+      Razorpay.open(RozarpayOptions, successCallback, errorCallback)
       this.as.addProductinDB(this.product);
     } else {
       const confirmed = window.confirm("Please login first. Do you want to proceed to the login page?");
@@ -90,4 +132,5 @@ export class ProductComponent {
       }
     }
   }
+
 }
