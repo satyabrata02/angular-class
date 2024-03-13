@@ -53,6 +53,9 @@ form .form-row .input-data input,
     resize: none;
     padding-top: 10px;
 }
+.textarea textarea::-webkit-scrollbar{
+    width: 0;
+}
 .input-data input:focus ~ label,
 .textarea textarea:focus ~ label,
 .input-data input:valid ~ label,
@@ -72,6 +75,7 @@ form .form-row .input-data input,
 .textarea label{
     width: 100%;
     bottom: 40px;
+    background-color: var(--text-color);
 }
 .input-data .underline{
     position: absolute;
