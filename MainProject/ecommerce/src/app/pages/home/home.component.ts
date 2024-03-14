@@ -19,11 +19,11 @@ export class HomeComponent {
     { image: "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg", title: "Infinix INBOOK X1Pro", description: "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty." },
   ];
   thumbnails = [
-    { image: "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg", name: "Huawei P30" },
-    { image: "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg", name: "iPhone X" },
-    { image: "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg", name: "OPPO F19" },
-    { image: "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg", name: "Samsung Galaxy Book" },
-    { image: "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg", name: "INBOOK X1Pro" },
+    { image: "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg", name: "Huawei P30", link: 5 },
+    { image: "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg", name: "iPhone X", link: 2 },
+    { image: "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg", name: "OPPO F19", link: 4 },
+    { image: "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg", name: "Samsung Galaxy Book", link: 7 },
+    { image: "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg", name: "INBOOK X1Pro", link: 9 },
   ];
   
   constructor(private titleService: Title){ 

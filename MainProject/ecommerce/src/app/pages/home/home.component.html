@@ -14,11 +14,11 @@
         <button (click)="next()">&gt;</button>
     </div>
     <div class="thumbnail">
-        <div class="item" *ngFor="let thumbnail of thumbnails; let i = index" [ngClass]="{'active': i === itemActive}" (click)="changeImage(i)">
-          <img [src]="thumbnail.image" alt="">
-          <div class="content">
-            <a routerLink="">{{ thumbnail.name }}</a>
-          </div>
+      <div class="item" *ngFor="let thumbnail of thumbnails; let i = index" [ngClass]="{'active': i === itemActive}" (click)="changeImage(i)">
+        <img [src]="thumbnail.image" alt="">
+        <div class="content">
+          <a [routerLink]="['/product', thumbnail.link]">{{ thumbnail.name }}</a>
         </div>
       </div>
+    </div>
 </div>
