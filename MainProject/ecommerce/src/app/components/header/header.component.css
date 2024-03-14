@@ -5,7 +5,7 @@ nav{
     height: 70px;
     width: 100%;
     background-color: var(--nav-color);
-    z-index: 5;
+    z-index: 500;
 }
 nav .nav-bar{
     position: relative;

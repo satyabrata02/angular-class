@@ -35,8 +35,6 @@ D:\Angular-Workshop\MainProject\ecommerce>ng generate service auth
 
 D:\Angular-Workshop\MainProject\ecommerce>ng generate service db
 
-D:\Angular-Workshop\MainProject\ecommerce>ng generate module material
-
 D:\Angular-Workshop\MainProject\ecommerce>ng generate module pages
 
 D:\Angular-Workshop\MainProject\ecommerce>ng add ngx-bootstrap
