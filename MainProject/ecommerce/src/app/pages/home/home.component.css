@@ -121,7 +121,7 @@
 }
 .thumbnail .item .content{
     position: absolute;
-    background-color: #fff;
+    background-color: var(--text-color);
     text-align: center;
     border-radius: 5px;
     inset: auto 10px 10px 10px;
